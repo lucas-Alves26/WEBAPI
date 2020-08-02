@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Cliente_asp.net.MVC.core.Models.Client>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<br/><br />
+
+
+<p>
+    <a asp-action="Create"  class="btn btn-default">Create New</a>
+</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="success">
+
+            <br/>
+        <th>
+        @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+        @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+        @Html.DisplayNameFor(model => model.FantasyName)
+        </th>
+        <th>
+        @Html.DisplayNameFor(model => model.KindPers)
+        </th>
+        <th>
+        @Html.DisplayNameFor(model => model.Cnpj)
+        </th>
+
+        <th>
+        @Html.DisplayNameFor(model => model.Address.Cep)
+        </th>
+
+        <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.FantasyName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.KindPers)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cnpj)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address.Cep)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

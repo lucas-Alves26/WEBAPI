@@ -1,0 +1,150 @@
+﻿@model Cliente_asp.net.MVC.core.Models.ViewModels.ClientAddressViewModel
+@using Cliente_asp.net.MVC.core.Models.ViewModels.Enums
+
+@{
+    ViewData["Title"] = "Editar cliente";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Client.Id" />
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Client.Name" class="control-label"></label>
+                    <input asp-for="Client.Name" class="form-control" />
+                    <span asp-validation-for="Client.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Client.CompanyName" class="control-label"></label>
+                    <input asp-for="Client.CompanyName" class="form-control" />
+                    <span asp-validation-for="Client.CompanyName" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Client.FantasyName" class="control-label"></label>
+                <input asp-for="Client.FantasyName" class="form-control" />
+                <span asp-validation-for="Client.FantasyName" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Client.KindPers" class="control-label"></label>
+                    <select asp-for="Client.KindPers" asp-items="@Html.GetEnumSelectList<Person>()" class="form-control"></select>
+                    <span asp-validation-for="Client.KindPers" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Client.Cnpj" class="control-label"></label>
+                    <input asp-for="Client.Cnpj" class="form-control" id="mascarar_cnpj"/>
+                    <span asp-validation-for="Client.Cnpj" class="text-danger" ></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Client.MunicipalRegistration" class="control-label"></label>
+                    <input asp-for="Client.MunicipalRegistration" class="form-control" />
+                    <span asp-validation-for="Client.MunicipalRegistration" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Client.StateRegistration" class="control-label"></label>
+                    <input asp-for="Client.StateRegistration" class="form-control" />
+                    <span asp-validation-for="Client.StateRegistration" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-4">
+                    <label asp-for="Client.Industry" class="control-label"></label>
+                    <input asp-for="Client.Industry" class="form-control" />
+                    <span asp-validation-for="Client.Industry" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Client.BlockedFinancial" class="control-label"></label>
+                    <input type="checkbox" asp-for="Client.BlockedFinancial" name="checkResp" value="false" />
+                    <label class="form-check-label" for="defaultCheck1">Não</label>
+                    <span asp-validation-for="Client.BlockedFinancial" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-2">
+                    <label asp-for="Client.Status" class="control-label"></label>
+                    <p>
+                        <label class="form-check-label" for="defaultCheck1">Sim</label>
+                        <input type="checkbox" asp-for="Client.Status" name="checkResp" value="true" />
+
+                    </p>
+                    <div class=col-md-2>
+                        <span asp-validation-for="Client.Status" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Client.Date" class="control-label"></label>
+                    <input asp-for="Client.Date" class="form-control" />
+                    <span asp-validation-for="Client.Date" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label asp-for="Client.Address.Street" class="control-label"></label>
+                    <input asp-for="Client.Address.Street" class="form-control" />
+                    <span asp-validation-for="Client.Address.Street" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="Client.Address.Neighborhood" class="control-label"></label>
+                    <input asp-for="Client.Address.Neighborhood" class="form-control" />
+                    <span asp-validation-for="Client.Address.Neighborhood" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label asp-for="Client.Address.Cep" class="control-label"></label>
+                    <input asp-for="Client.Address.Cep" class="form-control" id="mascarar_cep"/>
+                    <span asp-validation-for="Client.Address.Cep" class="text-danger"></span>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-danger" />
+                <a asp-action="Index" class="btn btn-default">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    var $j = jQuery.noConflict();
+
+    $j(function () {
+        $j("#mascarar_cnpj").mask("99.999.999/9999-99");
+    });
+
+    var $j = jQuery.noConflict();
+
+    $j(function () {
+        $j("#mascarar_cep").mask("99999-999");
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

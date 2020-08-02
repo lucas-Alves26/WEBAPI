@@ -1,0 +1,7 @@
+O sistema foi criado utilizando Aps.net Mvc e o banco de dados Sql Server.
+
+Antes de compilar!!!
+
+1- Trocar a string de conexão.
+2- Utilizar o cmd Database-Update no "package-Manager Console".
+
